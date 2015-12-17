@@ -89,3 +89,4 @@ if [ $restartES -eq "1" ]
 then
   echo -e "\n+++ Restarting ES ..."
   /etc/init.d/S31emulationstation start
+fi
