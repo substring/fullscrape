@@ -8,6 +8,7 @@ TMP=/tmp
 SCRAPER=$TMP/scraper
 MAMEDEVICES=("mame" "fba" "fba_libretro" "neogeo")
 CANSCRAPE=("${MAMEDEVICES[@]}" "nes" "snes" "n64" "gb" "gbc" "gba" "megadrive" "mastersystem" "sega32x" "gamegear" "pcengine" "atari2600" "lynx" "psx" "scummvm" "segacd")
+ESDAEMON=$(ls /etc/init.d/S*emulationstation)
 
 selectiveMode=0
 updateMode=
@@ -50,7 +51,7 @@ restartES=0
 if [ $esRunning -ge 1 ]
 then
   echo " +++ Shutting down EmulationStation to avoid ES rewriting the gamelist.xml files ..."
-  /etc/init.d/S31emulationstation stop
+  $ESDAEMON stop
   restartES=1
 fi
 
@@ -88,5 +89,5 @@ done
 if [ $restartES -eq "1" ]
 then
   echo -e "\n+++ Restarting ES ..."
-  /etc/init.d/S31emulationstation start
+  $ESDAEMON start
 fi
