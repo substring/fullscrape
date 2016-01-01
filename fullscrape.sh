@@ -38,12 +38,12 @@ fi
 
 echo "+++ Downloading and unzipping scraper ..."
 scraperVersion=$(wget -qO- https://api.github.com/repos/sselph/scraper/releases/latest | grep tag_name | cut -d '"' -f 4)
-scraperZip="scraper_${arch}.zip"
+scraperZip=scraper_${arch}.zip
 scraperURL=https://github.com/sselph/scraper/releases/download/${scraperVersion}/${scraperZip}
 echo "ARCH = $arch -> the scraper ($scraperVersion) will run on $nbworkers core(s) - Downloading from $scraperURL"
-wget -q $scraperURL
-unzip -o $scraperZip $(basename $SCRAPER) -d $TMP
-rm $scraperZip
+wget -P $TMP -q $scraperURL || { echo "ERROR : unable to download the scrape archive. Exiting ... " ; exit 1 ; }
+unzip -o $TMP/$scraperZip $(basename $SCRAPER) -d $TMP || { echo "ERROR : coulnd't unzip the scraper. Exiting ..." ; exit 1 ; }
+rm $TMP/$scraperZip
 chmod u+x $SCRAPER
 
 esRunning=$(ps | grep emulationstation | grep -v grep | wc -l)
@@ -84,7 +84,7 @@ do
   fi
 done
 
-#rm $SCRAPER
+rm $SCRAPER
 
 if [ $restartES -eq "1" ]
 then
