@@ -53,6 +53,10 @@ then
   echo " +++ Shutting down EmulationStation to avoid ES rewriting the gamelist.xml files ..."
   $ESDAEMON stop
   restartES=1
+  
+  espid=$(ps | grep emulationstation | grep '/usr/bin' | grep -v grep | tr -s ' ' | cut -d ' ' -f 2 )
+  echo -n "Waiting for emulationstation (pid $espid) to shutdown "
+  while kill -0 "$espid" > /dev/null 2>&1 ; do echo -n "." ;sleep 1; done
 fi
 
 #echo "$ROMSPATH/fba" | while read device
