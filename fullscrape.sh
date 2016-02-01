@@ -5,7 +5,6 @@ GAMELISTPATH=~/.emulationstation/gamelists
 GAMELISTPATH=$ROMSPATH
 IMAGESPATH=~/.emulationstation/downloaded_images
 IMAGESPATH=$ROMSPATH
-#SCRAPER=~/outils/scraper
 TMP=/tmp
 SCRAPER=$TMP/scraper
 MAMEDEVICES=("mame" "fba" "fba_libretro" "neogeo")
@@ -84,8 +83,6 @@ do
   if [[ " ${CANSCRAPE[@]} " =~ " ${system} " ]]
   then
     echo -e "\n+++ Scraping $system"
-#    mkdir -p $IMAGESPATH/$system/images
-#    $SCRAPER $updateMode $arcade $imgparms -rom_dir="$device" -output_file="$GAMELISTPATH/$system/gamelist.xml" -workers=$nbworkers -image_dir="$IMAGESPATH/$system" -image_path="$IMAGESPATH/$system"
     $SCRAPER $updateMode $arcade $imgparms -rom_dir="$device" -output_file="$GAMELISTPATH/$system/gamelist.xml" -workers=$nbworkers -image_path="./images" -image_dir="$IMAGESPATH/$system/images"
   else
     echo "--- $system is not a scrapable system"
