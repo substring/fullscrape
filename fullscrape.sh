@@ -82,7 +82,7 @@ do
   if [[ " ${CANSCRAPE[@]} " =~ " ${system} " ]]
   then
     echo -e "\n+++ Scraping $system"
-    $SCRAPER $updateMode $arcade $imgparms -rom_dir="$device" -output_file="$GAMELISTPATH/$system/gamelist.xml" -workers=$nbworkers -image_dir="$IMAGESPATH/$system" -image_path="$IMAGESPATH/$system"
+    $SCRAPER $updateMode $arcade $imgparms -rom_dir="$device" -output_file="$GAMELISTPATH/$system/gamelist.xml" -workers=$nbworkers  -img_workers=1 -image_dir="$IMAGESPATH/$system" -image_path="$IMAGESPATH/$system"
   else
     echo "--- $system is not a scrapable system"
   fi
