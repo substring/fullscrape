@@ -1,9 +1,7 @@
 #!/bin/bash
 
 ROMSPATH=/recalbox/share/roms
-GAMELISTPATH=~/.emulationstation/gamelists
 GAMELISTPATH=$ROMSPATH
-IMAGESPATH=~/.emulationstation/downloaded_images
 IMAGESPATH=$ROMSPATH
 TMP=/tmp
 SCRAPER=$TMP/scraper
@@ -96,4 +94,3 @@ then
   echo -e "\n+++ Restarting ES ..."
   $ESDAEMON start
 fi
-
