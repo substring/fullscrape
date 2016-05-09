@@ -6,7 +6,7 @@ IMAGESPATH=$ROMSPATH
 TMP=/tmp
 SCRAPER=$TMP/scraper
 MAMEDEVICES=("mame" "fba" "fba_libretro" "neogeo")
-CANSCRAPE=("${MAMEDEVICES[@]}" "nes" "snes" "n64" "gb" "gbc" "gba" "megadrive" "mastersystem" "sega32x" "gamegear" "pcengine" "atari2600" "lynx" "psx" "scummvm" "segacd")
+CANSCRAPE=("${MAMEDEVICES[@]}" "nes" "snes" "n64" "gb" "gbc" "gba" "megadrive" "mastersystem" "sega32x" "gamegear" "pcengine" "atari2600" "lynx" "psx" "scummvm" "segacd" "virtualboy" "sg1000" "ngp" "ngpc")
 ESDAEMON=$(ls /etc/init.d/S*emulationstation)
 
 selectiveMode=0
